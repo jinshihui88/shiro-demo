@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>系统首页</title>
+    </head>
+
+    <body>
+        <h1>Welcome to the system.</h1>
+
+        <button type="button" id="delete">删除</button> |
+        <button type="button" id="update">修改</button>
+
+        <script>
+            function request(url) {
+                fetch(url, { method: "POST" })
+                    .then(resp => resp.json())
+                    .then(resp => alert(resp.code + "：" + resp.message));
+            }
+
+            document.getElementById("delete").addEventListener("click", function () {
+                request("/user/delete");
+            });
+
+            document.getElementById("update").addEventListener("click", function () {
+                request("/user/update");
+            });
+        </script>
+    </body>
+</html>
